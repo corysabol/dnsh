@@ -23,7 +23,7 @@ function dnsh() {
     echo -n -e "$q" >&5 
     cat <&5 | hexdump -C
 }
-
+dnsh $1 $2
 # pure bash b64
 # https://gist.github.com/p120ph37/015941a57f0d8f9a1722
 
